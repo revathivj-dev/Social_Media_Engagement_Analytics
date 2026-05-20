@@ -1,0 +1,443 @@
+ia_engagement_analytics.py
+Basic informations:n
+-----------------------------------
+<class 'pandas.DataFrame'>
+RangeIndex: 5000 entries, 0 to 4999
+Data columns (total 19 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   user_id           5000 non-null   int64  
+ 1   age               4850 non-null   float64
+ 2   gender            4850 non-null   str    
+ 3   country           5000 non-null   str    
+ 4   post_id           5000 non-null   int64  
+ 5   post_type         5000 non-null   str    
+ 6   post_category     5000 non-null   str    
+ 7   likes             4850 non-null   float64
+ 8   comments          4850 non-null   float64
+ 9   shares            4850 non-null   float64
+ 10  watch_time_sec    5000 non-null   int64  
+ 11  impression_count  5000 non-null   int64  
+ 12  posted_at         5000 non-null   str    
+ 13  follower_count    5000 non-null   int64  
+ 14  is_verified       5000 non-null   bool   
+ 15  device_type       5000 non-null   str    
+ 16  sentiment         4850 non-null   str    
+ 17  hashtags          5000 non-null   str    
+ 18  engagement_rate   5000 non-null   float64
+dtypes: bool(1), float64(5), int64(5), str(8)
+memory usage: 708.1 KB
+None
+-----------------------------------
+Summuary statistics of Numerical columns :
+-----------------------------------
+        user_id      age    post_id     likes  comments   shares  watch_time_sec  impression_count  follower_count  engagement_rate
+count   5000.00  4850.00    5000.00   4850.00   4850.00  4850.00         5000.00           5000.00         5000.00          5000.00
+mean   54561.89    38.45  548042.91  10107.04   1502.20  1002.63         4014.50          50013.73       393698.22             0.96
+std    26090.37    14.91  260646.96   5789.82    869.54   579.62         2308.10          28844.94       230927.88             5.32
+min    10055.00    13.00  100068.00     10.00      0.00     0.00            0.00            105.00           87.00             0.01
+25%    32309.50    26.00  322543.50   5068.50    760.00   498.00         2017.75          24988.25       194480.00             0.15
+50%    54374.50    38.00  548077.50  10105.50   1497.00  1012.00         4034.50          49934.50       388982.00             0.25
+75%    77180.50    51.00  771574.50  15115.00   2256.00  1501.00         6020.25          74662.25       589744.25             0.50
+max    99963.00    64.00  999455.00  19998.00   2999.00  1999.00         7998.00          99995.00       799533.00           191.50
+-----------------------------------
+Head (first 5 rows):
+   user_id   age  gender country  post_id post_type  ... follower_count  is_verified  device_type  sentiment               hashtags  engagement_rate
+0    25795  43.0  Female  Brazil   496713     image  ...          81734        False       mobile   negative  #foodie #travel #love         0.190862
+1    10860  33.0    Male  Brazil   157326      reel  ...           5963        False       mobile   negative               #fitness         0.201493
+2    86820  32.0  Female      UK   109864      text  ...         501783        False       tablet   positive                #foodie         0.137345
+3    64886  51.0   Other  France   848877      text  ...         480212        False       mobile   negative    #music #foodie #fun         0.106195
+4    16265  34.0   Other      UK   449706     image  ...         383936        False       mobile   negative                #travel         2.777372
+
+[5 rows x 19 columns]
+
+Tail (last 5 rows):
+      user_id   age  gender    country  post_id  ... is_verified device_type  sentiment                     hashtags  engagement_rate
+4995    59500  44.0    Male  Australia   441541  ...       False      mobile   positive                 #travel #fun         0.466761
+4996    22100  38.0   Other        UAE   677076  ...       False     desktop   negative               #foodie #reels         0.621155
+4997    67021  63.0  Female        USA   273595  ...       False     desktop   positive             #lifestyle #tech         0.679688
+4998    29800  13.0  Female    Germany   785644  ...       False      tablet   positive        #reels #love #fitness         0.223518
+4999    73400  54.0   Other      Japan   712252  ...       False     desktop    neutral  #foodie #lifestyle #fashion         1.203527
+
+[5 rows x 19 columns]
+
+Shape of dataset:
+(5000, 19)
+
+Columns in dataset:
+Missing Values:  
+
+---------------
+user_id               0
+age                 150
+gender              150
+country               0
+post_id               0
+post_type             0
+post_category         0
+likes               150
+comments            150
+shares              150
+watch_time_sec        0
+impression_count      0
+posted_at             0
+follower_count        0
+is_verified           0
+device_type           0
+sentiment           150
+hashtags              0
+engagement_rate       0
+dtype: int64
+---------------
+---------------
+Duplicate Values:  
+
+0
+---------------
+datetime64[us]
+0   2022-12-17
+1   2023-06-02
+2   2023-05-07
+3   2023-02-12
+4   2023-05-23
+Name: posted_at, dtype: datetime64[us]
+Missing Values:  
+
+---------------
+user_id               0
+age                 150
+gender              150
+country               0
+post_id               0
+post_type             0
+post_category         0
+likes               150
+comments            150
+shares              150
+watch_time_sec        0
+impression_count      0
+posted_at             0
+follower_count        0
+is_verified           0
+device_type           0
+sentiment           150
+hashtags              0
+engagement_rate       0
+dtype: int64
+---------------
+Numeric Columns: ['age', 'likes', 'comments', 'shares', 'watch_time_sec', 'impression_count', 'follower_count', 'engagement_rate']
+Categorical Columns: ['gender', 'country', 'post_type', 'post_category', 'is_verified', 'device_type', 'sentiment', 'hashtags']
+<StringArray>
+['Female', 'Male', 'Other', nan]
+Length: 4, dtype: str
+<StringArray>
+[   'Brazil',        'UK',    'France',    'Canada',     'Japan', 'Australia',
+     'India',       'UAE',   'Germany',       'USA']
+Length: 10, dtype: str
+<StringArray>
+['image', 'reel', 'text', 'video']
+Length: 4, dtype: str
+<StringArray>
+[  'fitness',      'food',      'tech',    'travel',   'fashion', 'lifestyle',
+ 'education',     'music']
+Length: 8, dtype: str
+[False  True]
+<StringArray>
+['mobile', 'tablet', 'desktop']
+Length: 3, dtype: str
+<StringArray>
+['negative', 'positive', 'neutral', nan]
+Length: 4, dtype: str
+<StringArray>
+[      '#foodie #travel #love',                    '#fitness',
+                     '#foodie',         '#music #foodie #fun',
+                     '#travel',                      '#music',
+     '#travel #music #fitness',        '#music #fun #fitness',
+            '#lifestyle #love',                       '#tech',
+ ...
+      '#foodie #reels #travel',       '#fun #tech #lifestyle',
+   '#tech #lifestyle #fashion',  '#reels #lifestyle #fashion',
+        '#reels #foodie #love',      '#love #foodie #fashion',
+       '#fashion #music #tech',   '#music #lifestyle #travel',
+     '#lifestyle #reels #tech', '#foodie #lifestyle #fashion']
+Length: 761, dtype: str
+age                  13
+likes                10
+comments              0
+shares                0
+watch_time_sec        0
+impression_count    105
+follower_count       87
+engagement_rate       0
+dtype: int64
+age                     64
+likes                19998
+comments              2999
+shares                1999
+watch_time_sec        7998
+impression_count     99995
+follower_count      799533
+engagement_rate        191
+dtype: int64
+                    hashtags  hashtag_count
+0      #foodie #travel #love              1
+1                   #fitness              1
+2                    #foodie              1
+3        #music #foodie #fun              1
+4                    #travel              1
+5                   #fitness              1
+6                     #music              1
+7    #travel #music #fitness              1
+8       #music #fun #fitness              1
+9           #lifestyle #love              1
+10                     #tech              1
+11       #fun #fashion #love              1
+12                  #fitness              1
+13        #foodie #lifestyle              1
+14          #foodie #fashion              1
+15          #lifestyle #love              1
+16                    #reels              1
+17   #foodie #fun #lifestyle              1
+18   #love #fashion #fitness              1
+19  #foodie #travel #fitness              1
+
+--- gender ---
+gender
+Male      1699
+Other     1581
+Female    1570
+Name: count, dtype: int64
+Unique: <StringArray>
+['Female', 'Male', 'Other', nan]
+Length: 4, dtype: str
+nunique: 3
+
+--- country ---
+country
+India        535
+Canada       513
+Brazil       504
+UAE          503
+USA          501
+France       496
+UK           493
+Australia    493
+Germany      490
+Japan        472
+Name: count, dtype: int64
+Unique: <StringArray>
+[   'Brazil',        'UK',    'France',    'Canada',     'Japan', 'Australia',
+     'India',       'UAE',   'Germany',       'USA']
+Length: 10, dtype: str
+nunique: 10
+
+--- post_type ---
+post_type
+reel     1283
+image    1247
+text     1245
+video    1225
+Name: count, dtype: int64
+Unique: <StringArray>
+['image', 'reel', 'text', 'video']
+Length: 4, dtype: str
+nunique: 4
+
+--- post_category ---
+post_category
+fitness      675
+tech         665
+music        635
+education    631
+lifestyle    607
+travel       600
+fashion      594
+food         593
+Name: count, dtype: int64
+Unique: <StringArray>
+[  'fitness',      'food',      'tech',    'travel',   'fashion', 'lifestyle',
+ 'education',     'music']
+Length: 8, dtype: str
+nunique: 8
+
+--- is_verified ---
+is_verified
+False    4517
+True      483
+Name: count, dtype: int64
+Unique: [False  True]
+nunique: 2
+
+--- device_type ---
+device_type
+mobile     1684
+tablet     1658
+desktop    1658
+Name: count, dtype: int64
+Unique: <StringArray>
+['mobile', 'tablet', 'desktop']
+Length: 3, dtype: str
+nunique: 3
+
+--- sentiment ---
+sentiment
+positive    2363
+neutral     1527
+negative     960
+Name: count, dtype: int64
+Unique: <StringArray>
+['negative', 'positive', 'neutral', nan]
+Length: 4, dtype: str
+nunique: 3
+
+--- hashtags ---
+hashtags
+#tech                          201
+#love                          176
+#fitness                       174
+#music                         165
+#fun                           163
+                              ... 
+#love #foodie #fashion           1
+#fashion #music #tech            1
+#music #lifestyle #travel        1
+#lifestyle #reels #tech          1
+#foodie #lifestyle #fashion      1
+Name: count, Length: 761, dtype: int64
+Unique: <StringArray>
+[      '#foodie #travel #love',                    '#fitness',
+                     '#foodie',         '#music #foodie #fun',
+                     '#travel',                      '#music',
+     '#travel #music #fitness',        '#music #fun #fitness',
+            '#lifestyle #love',                       '#tech',
+ ...
+      '#foodie #reels #travel',       '#fun #tech #lifestyle',
+   '#tech #lifestyle #fashion',  '#reels #lifestyle #fashion',
+        '#reels #foodie #love',      '#love #foodie #fashion',
+       '#fashion #music #tech',   '#music #lifestyle #travel',
+     '#lifestyle #reels #tech', '#foodie #lifestyle #fashion']
+Length: 761, dtype: str
+nunique: 761
+
+---Average Likes by Posttype---
+post_type
+image    10104.85
+reel     10035.34
+text     10099.98
+video    10190.97
+Name: likes, dtype: float64
+
+----Impressions by Countries ---
+country
+Australia    48346.38
+Brazil       49193.17
+Canada       48703.15
+France       51727.67
+Germany      48605.41
+India        52462.39
+Japan        49616.14
+UAE          48928.41
+UK           51119.39
+USA          51263.87
+Name: impression_count, dtype: float64
+
+--- Engagement by sentiment ---
+sentiment
+negative    1.04
+neutral     0.99
+positive    0.95
+Name: engagement_rate, dtype: float64
+
+--- likes ---
+Mean: 10107.043711340206
+Median: 10105.5
+Mode: 6486.0
+Std Dev: 5789.819251557955
+Variance: 33522006.965711113
+25th Percentile: 5068.5
+50th Percentile: 10105.5
+75th Percentile: 15115.0
+Skewness: -0.00681349410417789
+Kurtosis: -1.2055465662351053
+Range: 19988.0
+
+--- comments ---
+Mean: 1502.1956701030929
+Median: 1497.0
+Mode: 2934.0
+Std Dev: 869.537889293804
+Variance: 756096.1409175238
+25th Percentile: 760.0
+50th Percentile: 1497.0
+75th Percentile: 2256.0
+Skewness: 0.003206324966861445
+Kurtosis: -1.2000962567252438
+Range: 2999.0
+
+--- shares ---
+Mean: 1002.6294845360825
+Median: 1012.0
+Mode: 138.0
+Std Dev: 579.6151583034588
+Variance: 335953.73173514364
+25th Percentile: 498.0
+50th Percentile: 1012.0
+75th Percentile: 1501.0
+Skewness: -0.0129769182180636
+Kurtosis: -1.2025033612597673
+Range: 1999.0
+
+--- watch_time_sec ---
+Mean: 4014.5032
+Median: 4034.5
+Mode: 916
+Std Dev: 2308.0964590420845
+Variance: 5327309.264242608
+25th Percentile: 2017.75
+50th Percentile: 4034.5
+75th Percentile: 6020.25
+Skewness: -0.018196273193231846
+Kurtosis: -1.195651797070188
+Range: 7998
+
+--- engagement_rate ---
+Mean: 0.9643560291583999
+Median: 0.2538959065
+Mode: 0.006362909
+Std Dev: 5.31802922266154
+Variance: 28.281434813082104
+25th Percentile: 0.14578108750000002
+50th Percentile: 0.2538959065
+75th Percentile: 0.504793702
+Skewness: 18.781270878869154
+Kurtosis: 482.9917386319569
+Range: 191.49798489100002
+
+--- follower_count ---
+Mean: 393698.2248
+Median: 388982.0
+Mode: 497502
+Std Dev: 230927.88453461003
+Variance: 53327687855.63019
+25th Percentile: 194480.0
+50th Percentile: 388982.0
+75th Percentile: 589744.25
+Skewness: 0.04111777394961326
+Kurtosis: -1.1894740478821386
+Range: 799446
+        age  likes  comments  shares  watch_time_sec  impression_count  follower_count  engagement_rate
+count  4850   4850      4850    4850            5000              5000            5000             5000
+mean     38  10107      1502    1002            4014             50013          393698                0
+std      14   5789       869     579            2308             28844          230927                5
+min      13     10         0       0               0               105              87                0
+25%      26   5068       760     498            2017             24988          194480                0
+50%      38  10105      1497    1012            4034             49934          388982                0
+75%      51  15115      2256    1501            6020             74662          589744                0
+max      64  19998      2999    1999            7998             99995          799533              191
+Number of outliers: 578
+post_type
+reel     1283
+image    1247
+text     1245
+video    1225
+Name: count, dtype: int64
